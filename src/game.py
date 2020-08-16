@@ -209,3 +209,8 @@ def check_highscore(score):
         # Open the scores file and overwrite the last highscore with the new highscore
         f = open("src/score.txt", "w")
         f.write(str(score))
+
+# Function to reset the highscore
+def reset_highscore():
+    f = open("src/score.txt", "r")
+    f.write("0")
