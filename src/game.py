@@ -5,6 +5,7 @@ import time
 from PyQt5.QtCore import  QTimer
 from PyQt5.QtWidgets import *
 from random import *
+from src.stylesheet import  blue_btn
 end_score = 0
 key_layout =[['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3']]
 reaction_time_to_level = {
@@ -43,9 +44,13 @@ class GameOver(QtWidgets.QWidget):
         # Displays highscore
         highscore_label = QLabel(f"Highscore is: {h}")
         highscore_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.reset_game_btn = QPushButton('RESTART')
+        self.reset_game_btn.setStyleSheet(blue_btn())
+
 
         layout.addWidget(game_over_label)
         layout.addWidget(score_label)
+        layout.addWidget(self.reset_game_btn)
         layout.addWidget(highscore_label)
         self.setLayout(layout)
         self.show()
@@ -85,13 +90,26 @@ class GameHome(QtWidgets.QWidget):
         time.sleep(self.time_to_press/100)
         self.timer.start(100)
 
+    def start_game(self):
+        self.game_over_display.setParent(None)
+        self.points = 0
+        self.createGridLayout()
+        self.point_label.setFont(QFont("Arial", 16, QFont.Black))
+        self.point_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.window_layout.addWidget(self.point_label)
+        self.window_layout.addWidget(self.horizontalGroupBox)
+
+        self.reset_round()
     def set_game_over(self):
         global  end_score
         end_score = self.points
         self.timer.stop()
         self.point_label.setParent(None)
         self.horizontalGroupBox.setParent(None)
-        self.window_layout.addWidget(GameOver())
+        self.game_over_display = GameOver()
+        self.game_over_display.reset_game_btn.clicked.connect(self.start_game)
+        self.window_layout.addWidget(self.game_over_display)
+
     def check_time(self):
         global end_score
         global key_layout
