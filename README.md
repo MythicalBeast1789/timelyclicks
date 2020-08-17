@@ -3,6 +3,8 @@
 
 TimelyClicks is a game where you have to press a button from a 4x4 grid before it dissapears. There are multiple levels and as levels increase the amount of time to click the button decreases
 
+To play download the correct version [from here](https://github.com/MythicalBeast1789/timelyclicks/releases)
+
 
 ![Gameplay](https://raw.githubusercontent.com/MythicalBeast1789/timelyclicks/mythical/images/s1.png)
 
