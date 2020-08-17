@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['start.py'],
-             pathex=['/home/mythical/code/written-weekly/timelyclicks'],
+             pathex=['C:\\Users\\duran\\Desktop\\CS Projects\\Written Weekly#1 - CodeCommunity\\timelyclicks'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -30,4 +30,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False )
+          console=True )
